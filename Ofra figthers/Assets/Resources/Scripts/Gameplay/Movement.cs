@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private KeyCode leftKey = KeyCode.A;
     [SerializeField] private KeyCode rightKey = KeyCode.D;
     [SerializeField] private float forceMagnitude = 5f;
-    [SerializeField] private float damageTaked = 0f;
+    public float damageTaked = 0f;
     public Respawn respawn;
 
     // Start is called before the first frame update
