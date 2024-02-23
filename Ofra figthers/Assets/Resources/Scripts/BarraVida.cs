@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class BarraVida : MonoBehaviour
 {
-    public GameObject player;
-    public Image barraDeVida;
-    public float vidaActual;
-    public float vidaMaxima = 100;
+    public Text textoPorcentaje; // Referencia al objeto de texto para mostrar el porcentaje
 
-    // Start is called before the first frame update
-    private void Start()
+    public float porcentaje;
+
+    private void Update()
     {
-        if (player.CompareTag("Player1")) { 
-            vidaActual = player.GetComponent<Movement>().damageTaked;
+        // Actualiza el texto del porcentaje
+        textoPorcentaje.text = porcentaje.ToString("F0") + "%"; // "F0" para redondear a números enteros
+
+        // Verifica si el porcentaje es igual a 100 para cambiar el color del texto
+        if (porcentaje >= 100f)
+        {
+            // Cambia el color del texto a Rojo Vino
+            textoPorcentaje.color = new Color(0.5f, 0f, 0.1f, 1f); // Rojo Vino: RGB(128, 0, 26)
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        barraDeVida.fillAmount = vidaActual / vidaMaxima;
     }
 }
