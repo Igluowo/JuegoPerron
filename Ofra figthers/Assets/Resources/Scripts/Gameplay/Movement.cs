@@ -19,12 +19,14 @@ public class Movement : MonoBehaviour
     private bool isJumping = false;
     [SerializeField] private ControlAnimacion animacion;
     [SerializeField] private BarraVida barraVida;
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.drag = 5f;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,11 +50,16 @@ public class Movement : MonoBehaviour
         {
             horizontalInput = 1f;
             transform.eulerAngles = new Vector3(0, 180, 0);
+            animator.SetBool("isRunning", true);
         }
         else if (Input.GetKey(rightKey))
         {
             horizontalInput = 1f;
             transform.eulerAngles = new Vector3(0, 0, 0);
+            animator.SetBool("isRunning", true);
+        }
+        else {
+            animator.SetBool("isRunning", false);
         }
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0f, 0f);
@@ -83,9 +90,11 @@ public class Movement : MonoBehaviour
             animacion.Ganador(ganador, true);
         }
         else {
+            rb.velocity = Vector2.zero;
+            damageTaked = 0f;
+            forceMagnitude = 0f;
             respawn.DeadPlayer();
             health--;
-            damageTaked = 0f;
             barraVida.cambiarPorcentaje(damageTaked);
         }
     }
@@ -109,6 +118,7 @@ public class Movement : MonoBehaviour
     {
         damageTaked += 10;
         rb.AddForce(Vector2.up * damageTaked, ForceMode2D.Impulse);
+        barraVida.cambiarPorcentaje(damageTaked);
     }
 
     void OnLand()
