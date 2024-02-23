@@ -19,4 +19,8 @@ public class BarraVida : MonoBehaviour
             textoPorcentaje.color = new Color(0.5f, 0f, 0.1f, 1f); // Rojo Vino: RGB(128, 0, 26)
         }
     }
+
+    public void cambiarPorcentaje(float daño) {
+        porcentaje = daño;
+    }
 }

@@ -28,4 +28,9 @@ public class ControlAnimacion : MonoBehaviour
             animator.enabled = false;
         }
     }
+
+    public void Ganador(string ganador, bool iniciar) {
+        activarAnimacion = iniciar;
+        NombrePlayer = ganador;
+    }
 }

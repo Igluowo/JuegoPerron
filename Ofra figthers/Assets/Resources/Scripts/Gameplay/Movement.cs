@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform firePoint;
     public Bullet bullet;
     private bool isJumping = false;
+    [SerializeField] private ControlAnimacion animacion;
+    [SerializeField] private BarraVida barraVida;
 
     // Start is called before the first frame update
     void Start()
@@ -69,18 +71,22 @@ public class Movement : MonoBehaviour
         forceMagnitude += damageTaked;
         Vector2 invertedDirection = damageDirection.normalized;
         rb.AddForce(invertedDirection * forceMagnitude, ForceMode2D.Impulse);
+        barraVida.cambiarPorcentaje(damageTaked);
     }
 
     void OnBecameInvisible()
     {
         if (health <= 0)
         {
+            string ganador = (gameObject.CompareTag("Player1")) ? "Player2" : "Player1";
             Destroy(this.gameObject);
+            animacion.Ganador(ganador, true);
         }
         else {
             respawn.DeadPlayer();
             health--;
             damageTaked = 0f;
+            barraVida.cambiarPorcentaje(damageTaked);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
