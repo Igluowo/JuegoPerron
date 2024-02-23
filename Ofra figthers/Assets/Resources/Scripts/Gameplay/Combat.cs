@@ -9,10 +9,11 @@ public class Combat : MonoBehaviour
     [SerializeField] private float hitRadius;
     [SerializeField] private float hitDamage = 5;
     [SerializeField] private int player;
+    [SerializeField] Animator animator;
+    [SerializeField] 
 
     private void Hit() {
         Collider2D[] objects = Physics2D.OverlapCircleAll(hitController.position, hitRadius);
-
         foreach (Collider2D obj in objects)
         {
             if (obj.CompareTag("Player" + (player + 1)) || obj.CompareTag("Player" + (player - 1))) {
@@ -24,13 +25,18 @@ public class Combat : MonoBehaviour
 
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire" + player)) {
+        if (Input.GetButtonDown("Fire" + player))
+        {
             Hit();
+                animator.SetBool("isPunching", true);
+        }
+        else {
+            animator.SetBool("isPunching", false);
         }
     }
 

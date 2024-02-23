@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private ControlAnimacion animacion;
     [SerializeField] private BarraVida barraVida;
     [SerializeField] private Animator animator;
+    [SerializeField] private KeyCode shootKey = KeyCode.C;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +38,16 @@ public class Movement : MonoBehaviour
         {
             RealizarSalto();
         }
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(shootKey))
+        {
+            animator.SetBool("isShooting", true);
             Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
+        else {
+            animator.SetBool("isShooting", false);
+        }
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isTakingDamage", false);
     }
 
     void HandleMovementInput()
@@ -79,6 +87,7 @@ public class Movement : MonoBehaviour
         Vector2 invertedDirection = damageDirection.normalized;
         rb.AddForce(invertedDirection * forceMagnitude, ForceMode2D.Impulse);
         barraVida.cambiarPorcentaje(damageTaked);
+        animator.SetBool("isTakingDamage", true);
     }
 
     void OnBecameInvisible()
@@ -104,6 +113,9 @@ public class Movement : MonoBehaviour
         {
             ApplyForceUpward();
         }
+        else {
+            animator.SetBool("isTakingDamage", false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,6 +123,15 @@ public class Movement : MonoBehaviour
         if (collision.collider.CompareTag("Floor"))
         {
             OnLand();
+        }
+        else if (collision.collider.CompareTag("Bullet"))
+        {
+            Vector2 damageDirection = collision.GetContact(0).normal;
+            TakeDamage(1, damageDirection);
+            Destroy(collision.gameObject);
+        }
+        else {
+            animator.SetBool("isTakingDamage", false);
         }
     }
 
