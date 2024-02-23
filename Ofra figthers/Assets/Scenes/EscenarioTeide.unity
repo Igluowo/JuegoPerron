@@ -349,9 +349,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1057008177355868344, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1080780786}
+    - target: {fileID: 1057008177355868344, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
       propertyPath: shootKey
       value: 108
       objectReference: {fileID: 0}
+    - target: {fileID: 1057008177355868344, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: animacion
+      value: 
+      objectReference: {fileID: 1080780785}
     - target: {fileID: 1057008177355868344, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
       propertyPath: barraVida
       value: 
@@ -1331,6 +1339,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1080780785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 801415620767175509, guid: f5dbce3e613d900479ffc933bd0dcfb4, type: 3}
+  m_PrefabInstance: {fileID: 1554302814406159635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb88c6bb1653e04c8b533e72436c07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1080780786 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5493170425758740371, guid: f5dbce3e613d900479ffc933bd0dcfb4, type: 3}
+  m_PrefabInstance: {fileID: 1554302814406159635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088449980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,6 +1458,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 749516168643580052, guid: 71416c715a32b3c43a5e543e9284ca3f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 749516168643580052, guid: 71416c715a32b3c43a5e543e9284ca3f, type: 3}
+      propertyPath: animacion
+      value: 
+      objectReference: {fileID: 1080780785}
     - target: {fileID: 749516168643580052, guid: 71416c715a32b3c43a5e543e9284ca3f, type: 3}
       propertyPath: barraVida
       value: 
@@ -2224,6 +2256,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 664ed0396322983438d955676e45dc98, type: 3}
+--- !u!114 &1327052961422437519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6034035360770901756, guid: 664ed0396322983438d955676e45dc98, type: 3}
+  m_PrefabInstance: {fileID: 1327052961422437518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1327052961422437520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9111404121689421333, guid: 664ed0396322983438d955676e45dc98, type: 3}
+  m_PrefabInstance: {fileID: 1327052961422437518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1554302814406159635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2316,6 +2370,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7168191468807463784, guid: f5dbce3e613d900479ffc933bd0dcfb4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1080780786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2333,6 +2391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pelea (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8049732409503013831, guid: d0afab965b81cdc42af43379a7ce3c68, type: 3}
+      propertyPath: TextoNumVidas
+      value: 
+      objectReference: {fileID: 1327052961422437519}
     - target: {fileID: 8049732409503013831, guid: d0afab965b81cdc42af43379a7ce3c68, type: 3}
       propertyPath: textoPorcentaje
       value: 
@@ -2430,6 +2492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4140425936908334671, guid: c6e0902aa6fa24c46b3ae9173276ed9e, type: 3}
+      propertyPath: TextoNumVidas
+      value: 
+      objectReference: {fileID: 1327052961422437520}
     - target: {fileID: 4140425936908334671, guid: c6e0902aa6fa24c46b3ae9173276ed9e, type: 3}
       propertyPath: textoPorcentaje
       value: 
