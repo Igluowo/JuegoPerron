@@ -104,6 +104,7 @@ public class Movement : MonoBehaviour
             forceMagnitude = 0f;
             respawn.DeadPlayer();
             health--;
+            barraVida.cambiarNumVida((int)health);
             barraVida.cambiarPorcentaje(damageTaked);
         }
     }
