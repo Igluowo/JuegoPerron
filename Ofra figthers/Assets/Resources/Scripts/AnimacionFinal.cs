@@ -1,27 +1,31 @@
 using UnityEngine;
-
-public class AnimacionFinal : MonoBehaviour
+using UnityEngine.UI;
+public class ControlAnimacion : MonoBehaviour
 {
-    public Animation animacion; // Referencia al componente Animation
-    public string nombreClip = "NombreDeTuAnimacion"; // Nombre del clip de animación que deseas reproducir
-
-    // Método para iniciar la animación
-    public void Iniciar()
+    public Animator animator; // Referencia al componente Animator
+    public bool activarAnimacion = false; // Variable para controlar si se activa la animación
+    public string NombrePlayer;
+    public Text textNuevo;
+    void Start()
     {
-        // Verificar si la animación está configurada y si no se está reproduciendo actualmente
-        if (animacion != null && !animacion.isPlaying)
-        {
-            // Reproducir la animación con el nombre especificado
-            animacion.Play(nombreClip);
-        }
+        // Configurar el estado inicial del componente Animator según el valor de activarAnimacion
+        animator.enabled = activarAnimacion;
     }
 
     void Update()
     {
-        // Verificar si la condición es verdadera para iniciar la animación
-        if (tuCondicionEsTrue)
+        // Si activarAnimacion cambia y el componente Animator está desactivado
+        if (activarAnimacion && !animator.enabled)
         {
-            Iniciar(); // Llamar al método para iniciar la animación
+            // Activar el componente Animator
+            animator.enabled = true;
+            textNuevo.text = "GANADOR \n" + NombrePlayer;
+        }
+        // Si activarAnimacion cambia y el componente Animator está activado
+        else if (!activarAnimacion && animator.enabled)
+        {
+            // Desactivar el componente Animator
+            animator.enabled = false;
         }
     }
 }
