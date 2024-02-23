@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu Principal.unity
     guid: 712d0a595bd5464448413656df98abd8
+  - enabled: 1
+    path: Assets/Scenes/EscenarioTeide.unity
+    guid: fbdd1b6f9570ee34785e448efef83316
+  - enabled: 1
+    path: Assets/Scenes/ElegirEscena.unity
+    guid: 5eaecd34894d06443a9b6ea4c769066d
   m_configObjects: {}
