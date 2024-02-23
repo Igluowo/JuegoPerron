@@ -2828,6 +2828,22 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5340794005741097208, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340794005741097208, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5340794005741097208, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -871183127, guid: ba7026b982bb5a24f9be61e9dbe84f68, type: 3}
+    - target: {fileID: 5340794005741097208, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6417751183616281569, guid: bc156cadd5486624aaae7684c4434afd, type: 3}
       propertyPath: m_Name
       value: Player2
