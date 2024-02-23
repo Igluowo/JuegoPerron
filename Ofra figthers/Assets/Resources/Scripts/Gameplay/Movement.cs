@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float forceMagnitude = 5f;
     public float damageTaked = 0f;
     public Respawn respawn;
+    [SerializeField] private Transform firePoint;
+    public Bullet bullet;
+    private bool isJumping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +29,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
         HandleMovementInput();
-        if (Input.GetKeyDown(jumpKey))
+        if (Input.GetKeyDown(jumpKey) && !isJumping)
         {
             RealizarSalto();
+        }
+        if (Input.GetKeyDown(KeyCode.C)) {
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
     }
 
@@ -38,11 +44,13 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(leftKey))
         {
-            horizontalInput = -1f;
+            horizontalInput = 1f;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
         else if (Input.GetKey(rightKey))
         {
             horizontalInput = 1f;
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0f, 0f);
@@ -51,6 +59,7 @@ public class Movement : MonoBehaviour
 
     void RealizarSalto()
     {
+        isJumping = true;
         rb.velocity = new Vector2(rb.velocity.x, alturaSalto);
     }
 
@@ -76,9 +85,17 @@ public class Movement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Floor"))
+        if (other.CompareTag("Street"))
         {
             ApplyForceUpward();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Floor"))
+        {
+            OnLand();
         }
     }
 
@@ -86,6 +103,11 @@ public class Movement : MonoBehaviour
     {
         damageTaked += 10;
         rb.AddForce(Vector2.up * damageTaked, ForceMode2D.Impulse);
+    }
+
+    void OnLand()
+    {
+        isJumping = false;
     }
 
 }
