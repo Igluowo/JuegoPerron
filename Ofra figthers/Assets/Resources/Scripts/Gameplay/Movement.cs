@@ -71,6 +71,21 @@ public class Movement : MonoBehaviour
         else {
             respawn.DeadPlayer();
             health--;
+            damageTaked = 0f;
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Floor"))
+        {
+            ApplyForceUpward();
+        }
+    }
+
+    void ApplyForceUpward()
+    {
+        damageTaked += 10;
+        rb.AddForce(Vector2.up * damageTaked, ForceMode2D.Impulse);
+    }
+
 }
