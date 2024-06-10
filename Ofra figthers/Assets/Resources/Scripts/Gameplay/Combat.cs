@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : MonoBehaviour
+public class Combate : MonoBehaviour
 {
 
     [SerializeField] private Transform hitController;
