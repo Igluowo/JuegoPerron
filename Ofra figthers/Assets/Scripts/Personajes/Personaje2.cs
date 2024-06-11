@@ -12,7 +12,12 @@ public class Personaje2 : Character
         Debug.Log(name);
     }
 
+    protected override void Ultimate(){
+        Debug.Log($"Ultimate personjae 2 ");
+    }
 
-
+    protected override void ChargeAttack(){
+        Debug.Log($"Cargado personjae 2 ");
+    }
 
 }

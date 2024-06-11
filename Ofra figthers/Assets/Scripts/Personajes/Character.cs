@@ -7,14 +7,15 @@ public abstract class Character : MonoBehaviour
     protected string name;
     protected Health health; 
     protected Combat combat;
-    public CharacterTypeEnum characterTypeEnum;
+    protected CharacterTypeEnum characterTypeEnum;
     public bool ultimate = false;
     public float movementSpeed = 5f;
 
-    void Awake()
+    public virtual void Awake()
     {
         AddRigidbody();
         AddHealth();
+        AddCombat();
     }
 
     public virtual void Start()
@@ -26,18 +27,21 @@ public abstract class Character : MonoBehaviour
     {
         //ActivateUltimate();  // Commented out because it is not currently being used
         MoveCharacter();
-
-        // Handle punch and kick actions
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            PerformPunch();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            PerformKick();
-        }
+        HandleAttacks();
+       
     }
 
+void HandleAttacks()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Ultimate();
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ChargeAttack();
+        }
+    }
     void ActivateUltimate()
     {
         if (ultimate)
@@ -64,19 +68,12 @@ public abstract class Character : MonoBehaviour
         // Apply the new velocity to the character's Rigidbody2D
         GetComponent<Rigidbody2D>().velocity = newMovementVelocity;
     }
+    //abstracto metodos
+    protected abstract void Ultimate();
 
-    void PerformPunch()
-    {
-        Debug.Log("Punch performed!");
-        // Add logic for punch action here, such as triggering animations, dealing damage to other characters, etc.
-    }
+    protected abstract void ChargeAttack();
 
-    void PerformKick()
-    {
-        Debug.Log("Kick performed!");
-        // Add logic for kick action here, such as triggering animations, dealing damage to other characters, etc.
-    }
-
+  
     void AddRigidbody()
     {
         if (GetComponent<Rigidbody2D>() == null)
@@ -99,6 +96,7 @@ public abstract class Character : MonoBehaviour
         combat = GetComponent<Combat>();
         if (combat == null)
         {
+            Debug.Log($"Es nulo");
             combat = gameObject.AddComponent<Combat>();
         }
     }

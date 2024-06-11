@@ -26,16 +26,7 @@ public class Combat : MonoBehaviour
         {
             Kick();
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Ultimate();
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            ChargeAttack();
-        }
     }
-
     void Punch()
     {
         Debug.Log("Punch performed!");
@@ -48,15 +39,5 @@ public class Combat : MonoBehaviour
         // Add logic for kick action here
     }
 
-    void Ultimate()
-    {
-        Debug.Log("Ultimate performed!");
-        // Add logic for ultimate action here
-    }
-
-    void ChargeAttack()
-    {
-        Debug.Log("Charge Attack performed!");
-        // Add logic for charge attack action here
-    }
+    
 }
